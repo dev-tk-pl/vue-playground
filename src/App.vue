@@ -1,26 +1,22 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+import { useCookies } from "vue3-cookies";
 export default {
   name: "App",
-  components: {
-    HelloWorld,
+  components: {},
+  setup() {
+    const { cookies } = useCookies();
+    return { cookies };
+  },
+  mounted() {
+    let my_cookie_value = this.cookies.get("myCoookie");
+    console.log(my_cookie_value);
+    this.cookies.set("myCoookie", "abcdefg");
   },
 };
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="scss"></style>
